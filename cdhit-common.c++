@@ -296,7 +296,7 @@ bool Options::SetOption2D( const char *flag, const char *value )
 }
 bool Options::SetOptionEST( const char *flag, const char *value )
 {
-	NAA_top_limit = 12;
+	NAA_top_limit = 1000;
 	if( SetOptionCommon( flag, value ) ) return true;
 	if (strcmp(flag, "-r" ) == 0) option_r  = atoi(value); 
 	else if (strcmp(flag, "-gap") == 0) mat.gap = MAX_SEQ * atoi(value);
@@ -355,7 +355,7 @@ void Options::Validate()
 	if( useDistance ){
 		if ((distance_thd > 1.0) || (distance_thd < 0.0)) bomb_error("invalid distance threshold");
 	}else if( isEST ){
-		if ((cluster_thd > 1.0) || (cluster_thd < 0.8)) bomb_error("invalid clstr threshold, should >=0.8");
+		if ((cluster_thd > 1.0) || (cluster_thd < 0.7)) bomb_error("invalid clstr threshold, should >=0.8");
 	}else{
 		if ((cluster_thd > 1.0) || (cluster_thd < 0.4)) bomb_error("invalid clstr");
 	}
